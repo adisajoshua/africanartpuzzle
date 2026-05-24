@@ -1,0 +1,652 @@
+/*
+ * Handoff-Ready Code Header
+ * Purpose: Component-level styles for African Art Puzzle UI elements.
+ * Features: Concept A clay-card headers, dot-grid canvas viewport, absolute piece rendering, timer layouts, and responsive responsive containers.
+ * Dependencies: src/index.css
+ */
+
+.app-header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--space-4);
+  width: 100%;
+}
+
+.app-title {
+  font-size: var(--text-xxl);
+  color: var(--color-ochre);
+  letter-spacing: -0.5px;
+  text-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-1);
+}
+
+.app-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-cream-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Landing Screen */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.landing-intro {
+  text-align: center;
+  margin-bottom: var(--space-10);
+  line-height: 1.6;
+}
+
+.landing-intro p {
+  color: var(--color-cream-muted);
+  font-size: var(--text-base);
+  margin-bottom: var(--space-2);
+}
+
+.artwork-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: var(--space-8);
+}
+
+.art-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.art-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-terracotta);
+  box-shadow: var(--shadow-lg), var(--shadow-terracotta);
+}
+
+.art-card-image-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+  position: relative;
+  background-color: hsla(24, 25%, 5%, 0.5);
+}
+
+.art-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.art-card:hover .art-card-image {
+  transform: scale(1.05);
+}
+
+.art-card-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.art-card-title {
+  font-size: var(--text-lg);
+  color: var(--color-cream);
+  margin-bottom: var(--space-1);
+}
+
+.art-card-origin {
+  font-size: var(--text-xs);
+  color: var(--color-ochre);
+  font-weight: 500;
+  margin-bottom: var(--space-3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.art-card-desc {
+  font-size: var(--text-sm);
+  color: var(--color-cream-muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+  flex-grow: 1;
+}
+
+.difficulty-selection {
+  margin-top: auto;
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
+}
+
+.difficulty-title {
+  font-size: var(--text-xs);
+  color: var(--color-cream);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-2);
+  text-align: center;
+}
+
+.btn-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+
+.btn-difficulty {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-cream-muted);
+  padding: var(--space-2) 0;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-transform: uppercase;
+}
+
+.btn-difficulty:hover {
+  border-color: var(--color-terracotta-light);
+  color: var(--color-cream);
+}
+
+.btn-difficulty.active {
+  background-color: var(--color-terracotta);
+  border-color: var(--color-terracotta);
+  color: var(--color-cream);
+  box-shadow: 0 0 10px hsla(14, 55%, 50%, 0.4);
+}
+
+/* Puzzle Canvas Environment */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.back-button {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-cream);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: all var(--transition-fast);
+}
+
+.back-button:hover {
+  background-color: var(--color-border);
+  border-color: var(--color-cream-muted);
+}
+
+.game-stats {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.stat-badge {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: var(--color-cream-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-1);
+}
+
+.stat-value {
+  font-family: monospace;
+  font-size: var(--text-md);
+  color: var(--color-ochre);
+  font-weight: bold;
+}
+
+/* The Workspace Grid Layout */
+.workspace-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px 1fr;
+  align-items: start;
+  gap: var(--space-8);
+  width: 100%;
+  margin-top: var(--space-4);
+}
+
+@media (max-width: 900px) {
+  .workspace-layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: var(--space-6);
+  }
+}
+
+/* Reference Thumbnail Panel */
+.reference-panel {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 260px;
+}
+
+.reference-title {
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-3);
+  color: var(--color-ochre);
+  text-align: center;
+}
+
+.reference-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  border: 2px solid var(--color-border);
+}
+
+.reference-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+.reference-meta {
+  margin-top: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--color-cream-muted);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Main Dotgrid Board Canvas */
+.canvas-wrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background-color: var(--color-card);
+  border: 4px solid var(--color-terracotta);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg), var(--shadow-terracotta);
+  overflow: visible; /* Allow pieces to be dragged slightly outside canvas safely */
+}
+
+/* Dot grid overlay inside canvas */
+.canvas-dotgrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(hsla(14, 55%, 50%, 0.15) 2px, transparent 2px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Puzzle pieces rendering style */
+.puzzle-piece {
+  position: absolute;
+  touch-action: none;
+  cursor: grab;
+  box-sizing: border-box;
+  box-shadow: var(--shadow-sm);
+  background-repeat: no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  z-index: 10;
+}
+
+.puzzle-piece:active {
+  cursor: grabbing;
+  z-index: 100;
+  box-shadow: var(--shadow-lg);
+}
+
+.puzzle-piece.snapped {
+  cursor: default;
+  border: none;
+  box-shadow: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Snap shadow indicator behind unplaced pieces */
+.target-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  pointer-events: none;
+}
+
+.target-slot {
+  box-sizing: border-box;
+  border: 1px dashed hsla(14, 55%, 50%, 0.1);
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Right Control Panel */
+.control-panel {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 260px;
+}
+
+.control-title {
+  font-size: var(--text-sm);
+  color: var(--color-ochre);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-2);
+}
+
+.hint-button {
+  background-color: var(--color-terracotta);
+  color: var(--color-cream);
+  border: none;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.hint-button:hover:not(:disabled) {
+  background-color: var(--color-terracotta-light);
+  box-shadow: var(--shadow-md), 0 0 10px hsla(14, 60%, 65%, 0.3);
+  transform: translateY(-2px);
+}
+
+.hint-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.progress-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--color-cream-muted);
+}
+
+.progress-bar-bg {
+  background: var(--color-border);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  background: linear-gradient(90deg, var(--color-terracotta), var(--color-ochre));
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.game-instructions {
+  font-size: var(--text-xs);
+  color: var(--color-cream-muted);
+  line-height: 1.5;
+  background-color: hsla(24, 25%, 5%, 0.3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Victory Screen / Modal overlay */
+.victory-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(10, 8, 7, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: var(--space-4);
+  backdrop-filter: blur(8px);
+}
+
+.victory-card {
+  background-color: var(--color-card);
+  border: 2px solid var(--color-ochre);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  max-width: 600px;
+  width: 100%;
+  box-shadow: var(--shadow-lg), 0 0 30px hsla(38, 70%, 55%, 0.2);
+  position: relative;
+  text-align: center;
+}
+
+.victory-card::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  height: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='8' viewBox='0 0 24 8'%3E%3Cpath d='M0,8 L12,0 L24,8' fill='none' stroke='%23f39c12' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+}
+
+.victory-badge {
+  font-size: var(--text-xxl);
+  color: var(--color-ochre);
+  margin-bottom: var(--space-4);
+  animation: pulse 2s infinite alternate;
+}
+
+.victory-title {
+  font-size: var(--text-xl);
+  color: var(--color-cream);
+  margin-bottom: var(--space-2);
+}
+
+.victory-subtitle {
+  color: var(--color-cream-muted);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.victory-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.victory-stat-item {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-2);
+}
+
+.victory-stat-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--color-cream-muted);
+  margin-bottom: var(--space-1);
+}
+
+.victory-stat-value {
+  font-size: var(--text-md);
+  font-weight: bold;
+  color: var(--color-ochre);
+  font-family: monospace;
+}
+
+.victory-stat-value.highlight {
+  color: var(--color-success);
+}
+
+.educational-card {
+  background-color: hsla(24, 25%, 5%, 0.6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+  text-align: left;
+}
+
+.educational-title {
+  font-size: var(--text-sm);
+  color: var(--color-ochre);
+  margin-bottom: var(--space-2);
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.educational-desc {
+  font-size: var(--text-sm);
+  color: var(--color-cream-muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-3);
+}
+
+.educational-fact-box {
+  background-color: hsla(14, 55%, 50%, 0.1);
+  border-left: 3px solid var(--color-terracotta);
+  padding: var(--space-3);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.educational-fact-title {
+  font-size: var(--text-xs);
+  color: var(--color-terracotta-light);
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.educational-fact {
+  font-size: var(--text-xs);
+  color: var(--color-cream);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.victory-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.btn-primary {
+  background-color: var(--color-ochre);
+  color: var(--color-bg);
+  border: none;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-weight: bold;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-cream);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-cream);
+  border: 1px solid var(--color-border);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-border);
+  border-color: var(--color-cream-muted);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
